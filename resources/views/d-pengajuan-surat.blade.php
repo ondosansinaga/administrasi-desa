@@ -102,7 +102,14 @@
                     </select>
 
                     @if($reqLetter->getDocUrl())
-                        <label class="item-req-letter-label mt-2">File</label>
+                        <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
+                        <div>
+                            <!-- <a target=”_blank” href="{{  url('/storage/documents/' . $reqLetter->getDocUrl()) }}">{{ $reqLetter->getDocUrl()  }}</a> -->
+                        </div>
+                    @endif
+
+                    @if($reqLetter->getDocUrl())
+                        <label class="item-req-letter-label mt-2">Pengajuan Surat di Terima</label>
                         <div>
                             <a target=”_blank” href="{{  url('/storage/documents/' . $reqLetter->getDocUrl()) }}">{{ $reqLetter->getDocUrl()  }}</a>
                         </div>
