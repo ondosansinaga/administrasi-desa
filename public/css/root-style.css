@@ -1,0 +1,74 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.my-text-area {
+    overflow-y: scroll;
+    resize: none;
+}
+
+.my-input, .my-text-area {
+    border-color: black;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-radius: 8px;
+    border-style: solid;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.my-input:focus, .my-text-area:focus {
+    border-color: var(--red-primary);
+    outline: 0;
+}
+
+.my-btn-primary {
+    background: var(--red-primary);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.my-btn-secondary {
+    background: white;
+    border: 1px solid var(--red-primary);
+    border-radius: 8px;
+    color: var(--red-primary);
+    font-weight: bold;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.my-btn-primary:hover {
+    background: var(--red-primary-light);
+    color: var(--red-primary);
+}
+
+.my-btn-primary:focus {
+    outline: 0;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: red;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    color: var(--red-primary-light);
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: white;
+    background-color: var(--red-primary);
+    border-color: var(--red-primary);
+}
