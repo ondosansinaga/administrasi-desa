@@ -152,7 +152,28 @@ class RequestLetterController extends Controller
                     [
                         'success' => 'Berhasil menghapus data surat pengjuan',
                     ]
-            ]);
+            ]
+        );
+    }
+
+    public function cetakSurat($id)
+    {
+        $appEntity = $this->service->getRequestLetterById($id);
+
+        if (!$appEntity->isStatus()) {
+            return redirect('/?menu=' . Menu::PENGAJUAN->value)->with(
+                [
+                    'message' =>
+                        [
+                            'error' => $appEntity->getMessage(),
+                        ]
+                ]
+            );
+        }
+
+        $user = $appEntity->getData();
+
+        return view('cetak.surat-permohonan', ['reqLetterValue' => $user]);
     }
 
 }

@@ -12,6 +12,7 @@ use App\Services\NewsService;
 use App\Services\RequestLetterService;
 use App\Services\RoleService;
 use App\Services\UserService;
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -50,5 +51,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+        Carbon::setLocale('id');
     }
 }

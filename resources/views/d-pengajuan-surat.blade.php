@@ -100,9 +100,12 @@
                         <option value="1" {{ $reqLetter->getStatus() == '1'?  'selected' : ''  }}>Accepted</option>
                         <option value="2" {{$reqLetter->getStatus() == '2'? 'selected' : ''  }}>Rejected</option>
                     </select>
+                    
+                    <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
+                    <a href="{{ route('cetak.surat', $reqLetter->getId()) }}" class="item-req-letter-label">Lihat Surat</a>
 
                     @if($reqLetter->getDocUrl())
-                        <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
+                    <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
                         <div>
                             <!-- <a target=”_blank” href="{{  url('/storage/documents/' . $reqLetter->getDocUrl()) }}">{{ $reqLetter->getDocUrl()  }}</a> -->
                         </div>

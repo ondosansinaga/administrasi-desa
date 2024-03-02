@@ -67,15 +67,15 @@ Route::post('/users-update/{id}', [UserController::class, 'updateUserById'])
     ->name('users.update')
     ->middleware([OnlyMemberMiddleware::class]);
 
-Route::post('/req-letters/{id}',[RequestLetterController::class, 'showReqLetterById'])
+Route::post('/req-letters/{id}', [RequestLetterController::class, 'showReqLetterById'])
     ->name('req-letter.show')
     ->middleware([OnlyMemberMiddleware::class]);
 
-Route::post('/req-letters-delete/{id}',[RequestLetterController::class, 'deleteReqLetterById'])
+Route::post('/req-letters-delete/{id}', [RequestLetterController::class, 'deleteReqLetterById'])
     ->name('req-letter.delete')
     ->middleware([OnlyMemberMiddleware::class]);
 
-Route::post('/req-letters-update/{id}',[RequestLetterController::class, 'updateReqLetterById'])
+Route::post('/req-letters-update/{id}', [RequestLetterController::class, 'updateReqLetterById'])
     ->name('req-letter.update')
     ->middleware([OnlyMemberMiddleware::class]);
 
@@ -91,4 +91,6 @@ Route::get('/storage/documents/{fileName}', function ($fileName) {
     return response()->file(Storage::path("public/documents/" . $fileName));
 });
 
-
+Route::get('/cetak-surat/{id}', [RequestLetterController::class, 'cetakSurat'])
+    ->name('cetak.surat')
+    ->middleware([OnlyMemberMiddleware::class]);
