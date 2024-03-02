@@ -93,6 +93,8 @@ class RequestLetterController extends Controller
         );
     }
 
+    
+
     public function showReqLetterById(Request $request, int $id)
     {
         $isEdit = $request->input('isEdit') ?? false;
@@ -116,6 +118,10 @@ class RequestLetterController extends Controller
         }
 
         $user = $appEntity->getData();
+        
+
+        // Mendapatkan $formatDate dari data yang diperlukan, misalnya dari $user
+        $formatDate = date("d F Y", strtotime($user->getDateRequest()));
 
         return $dest->with(
             [
@@ -173,7 +179,38 @@ class RequestLetterController extends Controller
 
         $user = $appEntity->getData();
 
-        return view('cetak.surat-permohonan', ['reqLetterValue' => $user]);
+         // Array untuk mengubah nama bulan menjadi kalimat
+        $bulanKalimat = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember'
+        ];
+
+        // Mendapatkan $formatDate dari data yang diperlukan, misalnya dari $user
+        $formatDate = date("d F Y", strtotime($user->getDateRequest()));
+
+        // Pisahkan tanggal, bulan, dan tahun
+        list($hari, $bulan, $tahun) = explode(' ', $formatDate);
+        // Ubah bulan menjadi kalimat menggunakan array $bulanKalimat
+        $bulan = $bulanKalimat[$bulan];
+        // Gabung kembali menjadi format "Hari-Bulan-Tahun"
+        $formatDate = $hari . ' ' . $bulan . ' ' . $tahun;
+
+
+        return view('cetak.surat-permohonan', [
+            'reqLetterValue' => $user,
+            'formatDate' => $formatDate, // Kirim $formatDate ke view
+
+        ]);
     }
 
 }

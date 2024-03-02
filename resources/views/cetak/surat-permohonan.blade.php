@@ -115,7 +115,7 @@
                     <div class="col-7"></div>
                     <div class="col-5">
                         <p>
-                            Ringin Sari, {{ date('d F Y') }} <br>
+                            Ringin Sari, {{ $formatDate }} <br>
                             Pj. Peratin Ringin Sari
                         </p>
     
