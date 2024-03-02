@@ -92,6 +92,7 @@
                     <div>
                         <label for="in-a-role" class="item-req-letter-label">Tanggal Pengajuan</label>
                         <p class="item-req-letter-value" id="in-a-role">{{ $formatDate }}</p>
+                        
                     </div>
 
                     <label for="in-status" class="item-req-letter-label mt-2">Status</label>
@@ -101,15 +102,15 @@
                         <option value="2" {{$reqLetter->getStatus() == '2'? 'selected' : ''  }}>Rejected</option>
                     </select>
                     
-                    <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
-                    <a href="{{ route('cetak.surat', $reqLetter->getId()) }}" class="item-req-letter-label">Lihat Surat</a>
+                    
+                  
 
-                    @if($reqLetter->getDocUrl())
+                    
                     <label class="item-req-letter-label mt-2">Permohonan Pengajuan Surat</label>
                         <div>
-                            <!-- <a target=”_blank” href="{{  url('/storage/documents/' . $reqLetter->getDocUrl()) }}">{{ $reqLetter->getDocUrl()  }}</a> -->
+                        <a target="_blank" href="{{ route('cetak.surat', $reqLetter->getId()) }}" class="item-req-letter-label">Lihat Surat</a>
                         </div>
-                    @endif
+                    
 
                     @if($reqLetter->getDocUrl())
                         <label class="item-req-letter-label mt-2">Pengajuan Surat di Terima</label>
