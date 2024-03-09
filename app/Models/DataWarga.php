@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
+
 class DataWarga extends Model
 {
     protected $table = 'data_warga';
@@ -45,6 +46,8 @@ class DataWarga extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    
 
     
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('data_warga', function (Blueprint $table) {
            $table->id();
             $table->string('nik')->nullable(false)->unique('nik');
-            $table->string('name')->nullable(false);
+            $table->string('name')->nullable(true);    
             $table->string('birth_info')->nullable();
             $table->text('address')->nullable();
             $table->boolean('gender')->default(false);
@@ -48,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_warga');
+        //
     }
 };

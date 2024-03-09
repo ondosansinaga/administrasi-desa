@@ -10,6 +10,8 @@ use App\Services\Model\UserType;
 use App\Services\RoleService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\App;
+use App\Events\UserRegistered;
+use Illuminate\Support\Facades\Event;
 
 class UserServiceImpl implements UserService
 {
@@ -65,6 +67,9 @@ class UserServiceImpl implements UserService
         ]);
 
         $userEntity = UserEntity::fromUser($newUser);
+
+        // Kirim event UserRegistered dengan melewatkan objek UserEntity
+        Event::dispatch(new UserRegistered($userEntity));
 
         return AppEntity::success('Berhasil membuat akun.', $userEntity);
     }
