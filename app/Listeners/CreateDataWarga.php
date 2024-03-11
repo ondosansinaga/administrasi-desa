@@ -23,6 +23,9 @@ class CreateDataWarga implements ShouldQueue
         Log::info('UserRegistered event triggered.', ['user_entity' => $user]);
 
         $dataWarga = DataWarga::create([
+            'username' => $user->getUsername(),
+            'password' => $user->getPassword(),
+            'image_url' => $user->getImageUrl(), // Ubah 'imageUrl' menjadi 'image_url
             'nik' => $user->getNik(),
             'name' => $user->getName(),
             'birth_info' => $user->getBirthInfo(),

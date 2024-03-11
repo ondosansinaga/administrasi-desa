@@ -51,6 +51,18 @@
         font-size: 14px;
     }
 
+    .warga-header{
+    align-items: center;
+        background: var(--red-primary);
+        border-radius: 16px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 14px 20px;
+        margin-bottom: 20px;
+}
+
 </style>
 
 @php
@@ -193,7 +205,7 @@
     </div>
 @endif
 
-<div>
+<div class="warga-header">
     <h3>{{ $title  }}</h3>
 </div>
 

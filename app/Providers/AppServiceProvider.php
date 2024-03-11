@@ -15,6 +15,8 @@ use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Services\Impl\WargaServiceImpl;
+use App\Services\WargaService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         LetterService::class => LetterServiceImpl::class,
         NewsService::class => NewsServiceImpl::class,
         RequestLetterService::class => RequestLetterServiceImpl::class,
+        WargaService::class => WargaServiceImpl::class,
     ];
 
     public function provides(): array
@@ -34,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
             LetterService::class,
             NewsService::class,
             RequestLetterService::class,
+            WargaService::class,
         ];
     }
 
@@ -42,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(WargaService::class, WargaServiceImpl::class);
     }
 
     /**

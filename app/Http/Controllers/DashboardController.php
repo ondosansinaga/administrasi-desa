@@ -11,6 +11,8 @@ use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Services\WargaService;
+use App\Models\DataWarga;
 
 class DashboardController extends Controller
 {
@@ -18,18 +20,21 @@ class DashboardController extends Controller
     private NewsService $newsService;
     private RequestLetterService $reqLetterService;
     private LetterService $letterService;
+    private WargaService $wargaService;
 
     public function __construct(
         UserService          $userService,
         NewsService          $newsService,
         RequestLetterService $reqLetterService,
         LetterService        $letterService,
+        WargaService         $wargaService,
     )
     {
         $this->userService = $userService;
         $this->newsService = $newsService;
         $this->reqLetterService = $reqLetterService;
         $this->letterService = $letterService;
+        $this->wargaService = $wargaService;
     }
 
     public function index(Request $request): Response|RedirectResponse
@@ -57,6 +62,9 @@ class DashboardController extends Controller
         switch ($menu) {
             case Menu::BERITA:
                 $data = $this->getNews($page);
+                break;
+            case Menu::WARGA:
+                $data = $this->getWarga($page);
                 break;
             case Menu::USERS:
                 $data = $this->getUsers($page);
@@ -110,4 +118,11 @@ class DashboardController extends Controller
     {
         return $this->userService->getUserById($id)->getData();
     }
+
+    private function getWarga(int $page)
+    {
+        return $this->wargaService->getWarga($page);
+    }
+
+   
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestLetterController;
+use App\Http\Controllers\DataWargaController;
 use Illuminate\Support\Facades\Storage;
 
 Route::fallback(function () {
@@ -58,6 +59,27 @@ Route::post('/profile-update/{id}', [ProfileController::class, 'updateProfile'])
 Route::post('/users/{id}', [UserController::class, 'showUserById'])
     ->name('users.show')
     ->middleware([OnlyMemberMiddleware::class]);
+
+
+
+Route::post('/warga/{id}', [DataWargaController::class, 'showDataWargaById'])
+    ->name('warga.show');
+
+    
+Route::post('/warga-update/{id}', [DataWargaController::class, 'updateWargaByid'])
+->name('warga.update')
+->middleware([OnlyMemberMiddleware::class]);
+
+Route::post('/warga-delete/{id}', [DataWargaController::class, 'deleteWargaById'])
+->name('warga.delete')
+->middleware([OnlyMemberMiddleware::class]);
+
+Route::post('/warga-add', [DataWargaController::class, 'tambahWarga'])
+->name('warga.add')
+->middleware([OnlyMemberMiddleware::class]);
+
+    
+
 
 Route::post('/users-delete/{id}', [UserController::class, 'deleteUserById'])
     ->name('users.delete')

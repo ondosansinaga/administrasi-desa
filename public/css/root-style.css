@@ -72,3 +72,8 @@ p {
     background-color: var(--red-primary);
     border-color: var(--red-primary);
 }
+
+body {
+    background-color: #f3f2f2;
+
+}

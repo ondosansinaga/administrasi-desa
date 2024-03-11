@@ -4,71 +4,75 @@
 
 @section('body')
 
-    <div class="container-fluid">
-        <div class="row vh-100">
-            <div class="col section-logo">
-                <img class="logo" src="{{URL::asset('/assets/ic_logo.png')}}" alt="Logo">
-                <br>
-                <h1 class="title">Aplikasi Administrasi <br/> Desa Ringin Sari</h1>
-            </div>
-            <div class="col section-form">
-                @if(isset($errorGlobalMessage))
-                    <div class="alert alert-danger" role="alert">
-                        {{ $errorGlobalMessage  }}
-                    </div>
-                @endif
+<div class="container-fluid">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-md-6 text-center mb-4">
+            <img class="logo" src="{{ URL::asset('/assets/ic_logo.png') }}" alt="Logo">
+            <h1 class="title">Aplikasi Administrasi Desa Ringin Sari</h1>
+        </div>
+        <div class="col-md-3">
+            @if(isset($errorGlobalMessage))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errorGlobalMessage }}
+                </div>
+            @endif
 
-                @php
-                    $errorSession = Session::get('errorGlobalMessage');
-                @endphp
+            @php
+                $errorSession = Session::get('errorGlobalMessage');
+            @endphp
 
-                @if(isset($errorSession))
-                    <div class="alert alert-danger" role="alert">
-                        {{ $errorSession  }}
-                    </div>
-                @endif
+            @if(isset($errorSession))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errorSession }}
+                </div>
+            @endif
 
-                <h3 class="title-login">{{ $title }}</h3>
-                <br>
-                <div id="login-form" class="login-form">
-                    <form method="POST" action="{{ route('login.post') }}">
-                        @csrf
-                        {{--Username--}}
-                        <label for="in-username" class="label">Username</label>
+            <div id="login-form" class="login-form">
+                <form method="POST" action="{{ route('login.post') }}">
+                    @csrf
+                    {{--Username--}}
+                    <div class="mb-3">
+                        <label for="in-username" class="form-label">Username</label>
                         <input id="in-username"
-                               class="my-input"
+                               class="form-control"
                                type="text"
                                placeholder="Masukan username anda"
                                aria-label="Username"
                                name="username"
-                               value="{{ $username  }}">
-                        <div id='msg-username'>
-                            @if(isset($errorMessage['username']))
-                                <p>{{$errorMessage['username']}}</p>
-                            @endif
-                        </div>
+                               value="{{ $username }}">
+                        @if(isset($errorMessage['username']))
+                            <div class="invalid-feedback d-block">
+                                {{ $errorMessage['username'] }}
+                            </div>
+                        @endif
+                    </div>
 
-                        {{--Password--}}
-                        <label for="in-pass" class="label mt-2">Password</label>
+                    {{--Password--}}
+                    <div class="mb-3">
+                        <label for="in-pass" class="form-label">Password</label>
                         <input id="in-pass"
-                               class="my-input"
+                               class="form-control"
                                type="password"
                                placeholder="Masukan password anda"
                                aria-label="Password"
                                name="password"
                                value="{{ $password }}">
-                        <div id='msg-pass'>
-                            @if(isset($errorMessage['password']))
-                                <p>{{$errorMessage['password']}}</p>
-                            @endif
-                        </div>
+                        @if(isset($errorMessage['password']))
+                            <div class="invalid-feedback d-block">
+                                {{ $errorMessage['password'] }}
+                            </div>
+                        @endif
+                    </div>
 
-                        <input class="my-btn-primary mt-3" type="submit" value="Login">
-                    </form>
-                </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 
 @endsection
 
@@ -85,58 +89,34 @@
 
 @section('head')
     <style>
-        .label {
-            color: black;
-            font-weight: bold;
-        }
+     .logo {
+        width: 200px;
+        margin-bottom: 20px;
+    }
 
-        .login-form {
-            width: 70%;
-            background: white;
-            border-radius: 16px;
-            padding: 16px;
-        }
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
+    .login-form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
         .logo {
-            width: 240px;
+            width: 150px;
         }
+    }
 
-        .section-logo {
-            align-items: center;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px 10px;
-        }
-
-        .section-form {
-            align-items: center;
-            background: var(--red-primary);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px 10px;
-        }
-
-        .title {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .title-login {
-            color: white;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .logo {
-                width: 140px;
-            }
-
-            .login-form {
-                width: 90%;
-            }
-        }
+    .row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
     </style>
 @endsection
