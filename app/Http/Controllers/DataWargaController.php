@@ -13,6 +13,10 @@ use App\Helpers\Constants;
 use Carbon\Carbon;
 use App\Models\Role;
 use App\Services\Model\RoleEntity;
+use App\Events\WargaUpdated;
+use App\Services\UserService;
+use App\Services\Model\UserEntity;
+
 
 
 
@@ -145,6 +149,12 @@ class DataWargaController extends Controller
                 ]
             );
         }
+
+        // Membuat instance DataWarga dari WargaEntity
+        $dataWarga = $wargaEntity->toModel();
+
+        // Panggil event WargaUpdated setelah proses update
+        event(new WargaUpdated($dataWarga));
 
         return $dest->with(
             [

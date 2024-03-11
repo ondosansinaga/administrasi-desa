@@ -42,10 +42,12 @@ class DataWarga extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    public function user(): BelongsTo
+        public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
+
+   
 
     
 

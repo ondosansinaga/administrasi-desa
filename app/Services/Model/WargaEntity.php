@@ -220,5 +220,10 @@ class WargaEntity
         return $this->updatedAt  ?? '';
     }
 
+    public function toModel(): DataWarga
+    {
+        return DataWarga::find($this->id);
+    }
+
     // You can add setter methods if needed
 }
