@@ -128,6 +128,19 @@
         margin-bottom: 20px;
 }
 
+.my-btn-secondary{
+    
+}
+
+.col-auto {
+    width: 280px;
+}
+
+.tombol-tambah {
+    margin-right: 20px;
+}
+
+
 
     
 
@@ -138,7 +151,7 @@
 @endphp
 
 
-
+<!-- CARI WARGA BERDASARKAN KK -->
 
 
 <!-- Modal Tambah -->
@@ -476,16 +489,27 @@
 </div>
 @endif
 
-<div class="warga-header">
-    <h3>Data Warga</h3>
-    <div>
-        <input class="my-btn-secondary"
-               type="button"
-               value="Tambah"
-               data-bs-toggle="modal"
-               data-bs-target="#addModal">
+<div class="warga-header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <div class="tombol-tambah">
+            <input class="my-btn-secondary"
+                type="button"
+                value="Tambah"
+                data-bs-toggle="modal"
+                data-bs-target="#addModal">
+        </div>
+        <h3>Data Warga</h3>
     </div>
+
+    <!-- Form Pencarian -->
+    <form id="searchForm" action="{{ route('searchWarga') }}" method="GET" onsubmit="return validateSearch()">
+        <div class="col-auto">
+            <label for="kk" class="visually-hidden">Search by No.KK</label>
+            <input type="text" class="form-control" id="kk" name="kk" placeholder="Search by No.KK...">
+        </div>
+    </form>
 </div>
+
 
 <!-- Show All -->
 <div class="row container">
@@ -556,7 +580,10 @@
     $isEdit = Session::get('isEdit') ?? false;
 @endphp
 
+
 <script type="text/javascript">
+
+
     window.addEventListener('load', function () {
         userDialog();
         messageDialog();
@@ -620,7 +647,7 @@
     }
 
     const togglePasswordAdd = document.querySelector('#togglePasswordAdd');
-        const passwordInputAdd = document.querySelector('#in-passwordAdd');
+    const passwordInputAdd = document.querySelector('#in-passwordAdd');
 
         togglePasswordAdd.addEventListener('click', function() {
             const type = passwordInputAdd.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -638,7 +665,9 @@
             this.querySelector('i').classList.toggle('fa-eye');
             this.querySelector('i').classList.toggle('fa-eye-slash');
         });
-    
+
+
+  
 </script>
 
 

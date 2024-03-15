@@ -281,6 +281,19 @@ class DataWargaController extends Controller
             ]
         );
     }
+
+
+    public function searchWarga(Request $request)
+    {
+        $kk = $request->input('kk') ?? null;
+
+        // Query untuk mencari data berdasarkan Nomor KK
+        $dataWarga = DataWarga::where('kk', 'LIKE', "%$kk%")->paginate(10);
+
+        $title = 'Hasil Pencarian Data Warga'; // Judul halaman
+        
+        return view('search-warga', compact('dataWarga', 'title'));
+    }
     
 
     

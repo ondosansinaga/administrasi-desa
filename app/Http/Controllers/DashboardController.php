@@ -124,5 +124,5 @@ class DashboardController extends Controller
         return $this->wargaService->getWarga($page);
     }
 
-   
+
 }
