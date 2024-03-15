@@ -11,6 +11,10 @@ class WargaEntity
     private ?string $password;
     private ?string $imageUrl;
     private ?string $nik;
+    private ?string $kk;
+    private ?string $rtrw;
+    private ?string $desa;
+    private ?string $kecamatan;
     private ?string $name;
     private ?string $birthInfo;
     private ?string $address;
@@ -33,6 +37,10 @@ class WargaEntity
         ?string $password = null,
         ?string $imageUrl = null , // Tambahkan tanda tanya (?) untuk mengizinkan null
         ?string $nik = null,
+        ?string $kk = null,
+        ?string $rtrw = null,
+        ?string $desa = null,
+        ?string $kecamatan = null,
         ?string $name = null,
         ?string $birthInfo = null,
         ?string $address = null,
@@ -56,6 +64,10 @@ class WargaEntity
         $this->password = $password;
         $this->imageUrl = $imageUrl;
         $this->nik = $nik;
+        $this->kk = $kk;
+        $this->rtrw = $rtrw;
+        $this->desa = $desa;
+        $this->kecamatan = $kecamatan;
         $this->name = $name;
         $this->birthInfo = $birthInfo;
         $this->address = $address;
@@ -95,6 +107,10 @@ class WargaEntity
             $dataWarga->password,
             $dataWarga->image_url,
             $dataWarga->nik,
+            $dataWarga->kk,
+            $dataWarga->rtrw,
+            $dataWarga->desa,
+            $dataWarga->kecamatan,
             $dataWarga->name,
             $dataWarga->birth_info,
             $dataWarga->address,
@@ -122,6 +138,26 @@ class WargaEntity
     public function getNik(): string
     {
         return $this->nik ?? ''; // Return empty string if $nik is null
+    }
+
+    public function getKk(): string
+    {
+        return $this->kk ?? '';
+    }
+
+    public function getRtrw(): string
+    {
+        return $this->rtrw ?? '';
+    }
+
+    public function getDesa(): string
+    {
+        return $this->desa ?? '';
+    }
+
+    public function getKecamatan(): string
+    {
+        return $this->kecamatan ?? '';
     }
 
     public function getName(): string
@@ -207,6 +243,7 @@ class WargaEntity
     {
         return $this->role;
     }
+    
 
     
 
@@ -224,6 +261,8 @@ class WargaEntity
     {
         return DataWarga::find($this->id);
     }
+
+    
 
     // You can add setter methods if needed
 }

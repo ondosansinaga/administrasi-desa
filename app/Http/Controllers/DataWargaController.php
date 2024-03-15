@@ -75,6 +75,10 @@ class DataWargaController extends Controller
         $nik = $request->input('nik') ?? null;
         $password = $request->input('password') ?? null;
         $name = $request->input('name') ?? null;
+        $kk = $request->input('kk') ?? null;
+        $rtrw = $request->input('rtrw') ?? null;
+        $desa = $request->input('desa') ?? null;
+        $kecamatan = $request->input('kecamatan') ?? null;
         $gender = $request->input('gender') ? true : false; // Ensure gender is bool
         $address = $request->input('address') ?? null;
         $ttl = $request->input('birth') ?? null;
@@ -123,6 +127,10 @@ class DataWargaController extends Controller
         $wargaEntity = new WargaEntity(
             id: $id,
             name: $name,
+            kk: $kk,
+            rtrw: $rtrw,
+            desa: $desa,
+            kecamatan: $kecamatan,
             password: $password,
             address: $address,
             imageUrl: $imagePath,
@@ -186,6 +194,10 @@ class DataWargaController extends Controller
     public function tambahWarga(Request $request)
     {
         $nik = $request->input('nik') ?? null;
+        $kk = $request->input('kk') ?? null;
+        $rtrw = $request->input('rtrw') ?? null;
+        $desa = $request->input('desa') ?? null;
+        $kecamatan = $request->input('kecamatan') ?? null;
         $name = $request->input('name') ?? null;
         $username = $request->input('username') ?? null;
         $password = $request->input('password') ?? null;
@@ -228,6 +240,10 @@ class DataWargaController extends Controller
     
         $wargaEntity = new WargaEntity(
             nik: $nik,
+            kk: $kk,
+            rtrw: $rtrw,
+            desa: $desa,
+            kecamatan: $kecamatan,
             name: $name,
             username: $username,
             password: $password,
@@ -264,6 +280,19 @@ class DataWargaController extends Controller
                 ],
             ]
         );
+    }
+
+
+    public function searchWarga(Request $request)
+    {
+        $kk = $request->input('kk') ?? null;
+
+        // Query untuk mencari data berdasarkan Nomor KK
+        $dataWarga = DataWarga::where('kk', 'LIKE', "%$kk%")->paginate(10);
+
+        $title = 'Hasil Pencarian Data Warga'; // Judul halaman
+        
+        return view('search-warga', compact('dataWarga', 'title'));
     }
     
 

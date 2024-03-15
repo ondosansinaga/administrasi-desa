@@ -56,7 +56,7 @@
    
 
     .status-value-modal{
-        margin-left: 10px;
+        margin-left: 30px;
     }
 
     .status-value-modal-edit{
@@ -69,7 +69,7 @@
 }
 
 .data-box {
-    width: calc(25% - 20px);
+    width: calc(30% - 20px);
     padding: 30px;
     margin: 10px;
     border: 1px solid #ccc;
@@ -128,6 +128,19 @@
         margin-bottom: 20px;
 }
 
+.my-btn-secondary{
+    
+}
+
+.col-auto {
+    width: 280px;
+}
+
+.tombol-tambah {
+    margin-right: 20px;
+}
+
+
 
     
 
@@ -138,7 +151,7 @@
 @endphp
 
 
-
+<!-- CARI WARGA BERDASARKAN KK -->
 
 
 <!-- Modal Tambah -->
@@ -156,6 +169,11 @@
                     <div class="mb-3">
                             <label for="nik" class="form-label">NIK</label>
                             <input id="nik" name="nik" class="form-control" type="text" required>
+                    </div>
+
+                    <div class="mb-3">
+                            <label for="kk" class="form-label">No.KK</label>
+                            <input id="kk" name="kk" class="form-control" type="text" required>
                     </div>
 
                     <div class="mb-3">
@@ -193,10 +211,18 @@
                     </div>
 
                     <div class="mb-3">
-                            <label for="address" class="form-label">Alamat</label>
-                            <input id="address" name="address" class="form-control" type="text" required>
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <label for="Alamat" class="form-label">Alamat</label>
+                        </div>
+                        <div class="col status-value-modal-edit">
+                        <input type="text" id="address" name="address" class="alamat-value mb-1 form-control" placeholder="Alamat">
+                            <input type="text" id="rtrw" name="rtrw" class="alamat-value mb-1 form-control" placeholder="RW/RW">
+                            <input type="text" id="desa" name="desa" class="alamat-value mb-1 form-control" placeholder="Kel/Desa">
+                            <input type="text" id="kecamatan" name="kecamatan" class="alamat-value mb-1 form-control" placeholder="Kecamatan">
+                        </div>
                     </div>
-
+                </div>
 
                     <div class="mb-3">
                         <div class="row align-items-center">
@@ -215,8 +241,9 @@
                             <div class="col status-value-modal">
                                 <select name="status2" id="status2" class="form-select" onchange="disablePlaceholderOption('edit-status2')">
                                     <option value="" disabled selected>Pilih Status 2</option>
-                                    <option value="Aktif">Aktif</option>
-                                    <option value="Tidak Aktif" >Tidak Aktif</option>
+                                    <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                    <option value="Istri" >Istri</option>
+                                    <option value="Anak">Anak</option>
                                 </select>
                             </div>
                         </div>
@@ -269,6 +296,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="in-kk" class="form-label">No.KK</label>
+                    <input type="text" class="form-control" id="in-nik" value="{{ $warga->getKk() }}" disabled>
+                </div>
+
+                <div class="mb-3">
                     <label for="in-username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="in-nik" value="{{ $warga->getUsername() }}" disabled>
                 </div>
@@ -304,8 +336,17 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="in-address" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="in-address" value="{{ $warga->getAddress() }}" disabled>
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <label for="alamat" class="form-label">Alamat</label>
+                        </div>
+                        <div class="col status-value-modal-edit">
+                            <input type="text" id="alamat" name="alamat" class="alamat-value mb-1 form-control" value="{{ $warga->getAddress() }}" placeholder="Alamat" disabled>
+                            <input type="text" id="rt/rw" name="rt/rw" class="alamat-value mb-1 form-control" value="{{ $warga->getRtrw() }}" placeholder="RW/RW" disabled>
+                            <input type="text" id="desa" name="desa" class="alamat-value mb-1 form-control" value="{{ $warga->getDesa() }}" placeholder="Kel/Desa" disabled>
+                            <input type="text" id="kecamatan" name="kecamatan" class="alamat-value mb-1 form-control" value="{{ $warga->getKecamatan() }}" placeholder="Kecamatan" disabled>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -360,6 +401,11 @@
                         <input id="edit-nik" name="nik" class="form-control" value="{{ $warga->getNik() }}" type="text">
                     </div>
 
+                    <div class="mb-3">
+                        <label for="edit-kk" class="form-label">No.KK</label>
+                        <input id="edit-kk" name="kk" class="form-control" value="{{ $warga->getKk() }}" type="text">
+                    </div>
+
                    
                     <div class="mb-3">
                         <label for="edit-name" class="form-label">Nama</label>
@@ -372,18 +418,19 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="edit-address" class="form-label">Alamat</label>
-                        <input name="address" type="text" class="form-control" id="edit-address" value="{{ $warga->getAddress() }}">
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <label for="alamat" class="form-label">Alamat</label>
+                        </div>
+                        <div class="col status-value-modal-edit">
+                            <input type="text" id="alamat" name="address" class="alamat-value mb-1 form-control" value="{{ $warga->getAddress() }}" placeholder="Alamat">
+                            <input type="text" id="rtrw" name="rtrw" class="alamat-value mb-1 form-control" value="{{ $warga->getRtrw() }}" placeholder="RW/RW">
+                            <input type="text" id="desa" name="desa" class="alamat-value mb-1 form-control" value="{{ $warga->getDesa() }}" placeholder="Kel/Desa">
+                            <input type="text" id="kecamatan" name="kecamatan" class="alamat-value mb-1 form-control" value="{{ $warga->getKecamatan() }}" placeholder="Kecamatan">
+                        </div>
                     </div>
-                    
-                    <div class="mb-4">
-                        <label for="edit-statPerkaw" class="form-label">Status Perkawinan</label>
-                        <select type="text" name="statusPerkawinan" id="edit-statPerkaw" class="form-select" onchange="disablePlaceholderOption()">
-                            <option value="" disabled selected>Pilih Status Perkawinan</option>
-                            <option value="Belum Kawin" {{ $warga->getStatusPerkawinana() === 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
-                            <option value="Kawin" {{ $warga->getStatusPerkawinana() === 'Kawin' ? 'selected' : '' }}>Kawin</option>
-                        </select>
-                    </div>
+                </div>
+                
 
 
                     <div class="mb-3">
@@ -403,11 +450,21 @@
                             <div class="col status-value-modal">
                                 <select name="status2" id="edit-status2" class="form-select" onchange="disablePlaceholderOption('edit-status2')">
                                     <option value="" disabled selected>Pilih Status 2</option>
-                                    <option value="Aktif" {{ $warga->getStatus2() == "Aktif" ? 'selected' : '' }}>Aktif</option>
-                                    <option value="Tidak Aktif" {{ $warga->getStatus2() == "Tidak Aktif" ? 'selected' : '' }}>Tidak Aktif</option>
+                                    <option value="Kepala Keluarga" {{ $warga->getStatus2() == "Kepala Keluarga" ? 'selected' : '' }}>Kepala Keluarga</option>
+                                    <option value="Istri" {{ $warga->getStatus2() == "Istri" ? 'selected' : '' }}>Istri</option>
+                                    <option value="Anak" {{ $warga->getStatus2() == "Anak" ? 'selected' : '' }}>Anak</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="edit-statPerkaw" class="form-label">Status Perkawinan</label>
+                        <select type="text" name="statusPerkawinan" id="edit-statPerkaw" class="form-select" onchange="disablePlaceholderOption()">
+                            <option value="" disabled selected>Pilih Status Perkawinan</option>
+                            <option value="Belum Kawin" {{ $warga->getStatusPerkawinana() === 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                            <option value="Kawin" {{ $warga->getStatusPerkawinana() === 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
@@ -432,16 +489,27 @@
 </div>
 @endif
 
-<div class="warga-header">
-    <h3>Data Warga</h3>
-    <div>
-        <input class="my-btn-secondary"
-               type="button"
-               value="Tambah"
-               data-bs-toggle="modal"
-               data-bs-target="#addModal">
+<div class="warga-header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+        <div class="tombol-tambah">
+            <input class="my-btn-secondary"
+                type="button"
+                value="Tambah"
+                data-bs-toggle="modal"
+                data-bs-target="#addModal">
+        </div>
+        <h3>Data Warga</h3>
     </div>
+
+    <!-- Form Pencarian -->
+    <form id="searchForm" action="{{ route('searchWarga') }}" method="GET" onsubmit="return validateSearch()">
+        <div class="col-auto">
+            <label for="kk" class="visually-hidden">Search by No.KK</label>
+            <input type="text" class="form-control" id="kk" name="kk" placeholder="Search by No.KK...">
+        </div>
+    </form>
 </div>
+
 
 <!-- Show All -->
 <div class="row container">
@@ -452,6 +520,12 @@
                     <div class="info-label">NIK:</div>
                     <div class="info-value">{{ $d->getNik() }}</div>
                 </div>
+
+                <div class="info-item">
+                    <div class="info-label">No.KK:</div>
+                    <div class="info-value">{{ $d->getKk() }}</div>
+                </div>
+
                 <div class="info-item">
                     <div class="info-label">Nama:</div>
                     <div class="info-value">{{ $d->getName() }}</div>
@@ -506,7 +580,10 @@
     $isEdit = Session::get('isEdit') ?? false;
 @endphp
 
+
 <script type="text/javascript">
+
+
     window.addEventListener('load', function () {
         userDialog();
         messageDialog();
@@ -570,7 +647,7 @@
     }
 
     const togglePasswordAdd = document.querySelector('#togglePasswordAdd');
-        const passwordInputAdd = document.querySelector('#in-passwordAdd');
+    const passwordInputAdd = document.querySelector('#in-passwordAdd');
 
         togglePasswordAdd.addEventListener('click', function() {
             const type = passwordInputAdd.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -588,7 +665,9 @@
             this.querySelector('i').classList.toggle('fa-eye');
             this.querySelector('i').classList.toggle('fa-eye-slash');
         });
-    
+
+
+  
 </script>
 
 

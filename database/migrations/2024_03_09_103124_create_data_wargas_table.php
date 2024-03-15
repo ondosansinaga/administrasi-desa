@@ -17,14 +17,18 @@ return new class extends Migration
             $table->string('password', 100)->nullable(false);
             $table->string('image_url')->nullable();
             $table->string('nik')->nullable(false)->unique('nik');
+            $table->string('kk')->nullable();
             $table->string('name')->nullable(true);    
             $table->string('birth_info')->nullable();
             $table->text('address')->nullable();
+            $table->text('rt_rw')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('kecamatan')->nullable();
             $table->boolean('gender')->default(false);
             $table->timestamps();
-            $table->enum('status_1', ['Kelahiran', 'Masuk', 'Keluar','Kematian'])->default('Kelahiran');
-            $table->enum('status_2', ['Aktif', 'Tidak Aktif'])->default('Aktif');
-            $table->enum('status_perkawinana', ['Kawin', 'Belum Kawin'])->default('Belum Kawin');
+            $table->enum('status_1', ['Kelahiran', 'Masuk', 'Keluar','Kematian'])->nullable();
+            $table->enum('status_2', ['Kepala Keluarga', 'Istri', 'Anak'])->nullable();
+            $table->enum('status_perkawinana', ['Kawin', 'Belum Kawin'])->nullable();
             $table->string('job_title')->nullable();
             $table->string('kewarganegaraan')->nullable();
 

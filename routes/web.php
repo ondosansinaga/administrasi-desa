@@ -60,10 +60,14 @@ Route::post('/users/{id}', [UserController::class, 'showUserById'])
     ->name('users.show')
     ->middleware([OnlyMemberMiddleware::class]);
 
-
+Route::get('/search-warga', [DataWargaController::class, 'searchWarga'])
+    ->name('searchWarga');
 
 Route::post('/warga/{id}', [DataWargaController::class, 'showDataWargaById'])
     ->name('warga.show');
+
+    Route::get('/warga', [DashboardController::class, 'getWargaPage'])->name('nama_route_ke_warga');
+
 
     
 Route::post('/warga-update/{id}', [DataWargaController::class, 'updateWargaByid'])
