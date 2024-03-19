@@ -233,8 +233,6 @@
                                 <select name="status1" id="status1" class="form-select" onchange="disablePlaceholderOption('edit-status1')">
                                     <option value="" disabled selected>Pilih Status 1</option>
                                     <option value="Kelahiran">Kelahiran</option>
-                                    <option value="Masuk" >Masuk</option>
-                                    <option value="Keluar" >Keluar</option>
                                     <option value="Kematian" >Kematian</option>
                                 </select>
                             </div>
@@ -442,8 +440,6 @@
                                 <select name="status1" id="edit-status1" class="form-select" onchange="disablePlaceholderOption('edit-status1')">
                                     <option value="" disabled selected>Pilih Status 1</option>
                                     <option value="Kelahiran" {{ $warga->getStatus1() == "Kelahiran" ? 'selected' : '' }}>Kelahiran</option>
-                                    <option value="Masuk" {{ $warga->getStatus1() == "Masuk" ? 'selected' : '' }}>Masuk</option>
-                                    <option value="Keluar" {{ $warga->getStatus1() == "Keluar" ? 'selected' : '' }}>Keluar</option>
                                     <option value="Kematian" {{ $warga->getStatus1() == "Kematian" ? 'selected' : '' }}>Kematian</option>
                                 </select>
                             </div>
