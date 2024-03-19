@@ -232,8 +232,8 @@
                             <div class="col status-value-modal-edit">
                                 <select name="status1" id="status1" class="form-select" onchange="disablePlaceholderOption('edit-status1')">
                                     <option value="" disabled selected>Pilih Status 1</option>
-                                    <option value="Kelahiran">Kelahiran</option>
-                                    <option value="Kematian" >Kematian</option>
+                                    <option value="Hidup">Hidup</option>
+                                    <option value="Mati" >Mati</option>
                                 </select>
                             </div>
                             <div class="col status-value-modal">
@@ -439,8 +439,8 @@
                             <div class="col status-value-modal-edit">
                                 <select name="status1" id="edit-status1" class="form-select" onchange="disablePlaceholderOption('edit-status1')">
                                     <option value="" disabled selected>Pilih Status 1</option>
-                                    <option value="Kelahiran" {{ $warga->getStatus1() == "Kelahiran" ? 'selected' : '' }}>Kelahiran</option>
-                                    <option value="Kematian" {{ $warga->getStatus1() == "Kematian" ? 'selected' : '' }}>Kematian</option>
+                                    <option value="Hidup" {{ $warga->getStatus1() == "Hidup" ? 'selected' : '' }}>Hidup</option>
+                                    <option value="Mati" {{ $warga->getStatus1() == "Mati" ? 'selected' : '' }}>Mati</option>
                                 </select>
                             </div>
                             <div class="col status-value-modal">

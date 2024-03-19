@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('kecamatan')->nullable();
             $table->boolean('gender')->default(false);
             $table->timestamps();
-            $table->enum('status_1', ['Kelahiran', 'Masuk', 'Keluar','Kematian'])->nullable();
+            $table->enum('status_1', ['Hidup', 'Mati'])->nullable();
             $table->enum('status_2', ['Kepala Keluarga', 'Istri', 'Anak'])->nullable();
             $table->enum('status_perkawinana', ['Kawin', 'Belum Kawin'])->nullable();
             $table->string('job_title')->nullable();
